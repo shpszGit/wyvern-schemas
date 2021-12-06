@@ -10,8 +10,7 @@
     "lint": "scripts/lint.sh",
     "dev": "scripts/dev.sh",
     "build": "scripts/build.sh",
-    "test": "scripts/test.sh",
-    "disabled-prepublish": "yarn build"
+    "test": "scripts/test.sh"
   },
   "repository": {
     "type": "git",
