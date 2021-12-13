@@ -1,7 +1,7 @@
-import * as Web3 from 'web3';
 
 import { ENSName, ENSNameBaseSchema } from '../../../common/ens';
 import {
+  AbiType,
   FunctionInputKind,
   FunctionOutputKind,
   Schema,
@@ -25,33 +25,33 @@ export const rinkebyENSNameSchema: Schema<ENSName> = {
         url: 'https://github.com/ethereum/EIPs/blob/master/EIPS/eip-137.md',
         properties: [],
       };
-  },
+    },
   functions: {
     transfer: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'setOwner',
       payable: false,
       constant: false,
       stateMutability: StateMutability.Nonpayable,
       target: '0xe7410170f87102df0055eb195163a03b7f2bff4a',
       inputs: [
-        {kind: FunctionInputKind.Asset, name: 'node', type: 'bytes32', value: asset.nodeHash },
-        {kind: FunctionInputKind.Replaceable, name: 'owner', type: 'address'},
+        { kind: FunctionInputKind.Asset, name: 'node', type: 'bytes32', value: asset.nodeHash },
+        { kind: FunctionInputKind.Replaceable, name: 'owner', type: 'address' },
       ],
       outputs: [],
     }),
     ownerOf: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'owner',
       payable: false,
       constant: true,
       stateMutability: StateMutability.View,
       target: '0xe7410170f87102df0055eb195163a03b7f2bff4a',
       inputs: [
-        {kind: FunctionInputKind.Asset, name: 'node', type: 'bytes32', value: asset.nodeHash},
+        { kind: FunctionInputKind.Asset, name: 'node', type: 'bytes32', value: asset.nodeHash },
       ],
       outputs: [
-        {kind: FunctionOutputKind.Owner, name: '', type: 'address'},
+        { kind: FunctionOutputKind.Owner, name: '', type: 'address' },
       ],
     }),
     assetsOfOwnerByIndex: [],

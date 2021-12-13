@@ -1,5 +1,3 @@
-import { AbiType } from 'web3';
-
 import {
   ENSName,
   ENSNameBaseSchema,
@@ -7,6 +5,7 @@ import {
   nodehash,
 } from '../../../common/ens';
 import {
+  AbiType,
   EventInputKind,
   FunctionInputKind,
   Schema,

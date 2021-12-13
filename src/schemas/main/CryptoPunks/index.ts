@@ -1,6 +1,6 @@
-import * as Web3 from 'web3';
 
 import {
+  AbiType,
   EventInputKind,
   FunctionInputKind,
   FunctionOutputKind,
@@ -18,10 +18,10 @@ export const CryptoPunksSchema: Schema<CryptoPunksType> = {
   thumbnail: 'https://www.larvalabs.com/cryptopunks/cryptopunk2838.png',
   website: 'https://www.larvalabs.com/cryptopunks',
   fields: [
-    {name: 'ID', type: 'uint256', description: 'CryptoPunk number.'},
+    { name: 'ID', type: 'uint256', description: 'CryptoPunk number.' },
   ],
   assetFromFields: (fields: any) => fields.ID,
-  assetToFields: asset => ({ID: asset}),
+  assetToFields: asset => ({ ID: asset }),
   formatter:
     async asset => {
       return {
@@ -31,47 +31,47 @@ export const CryptoPunksSchema: Schema<CryptoPunksType> = {
         url: 'https://www.larvalabs.com/cryptopunks/details/' + asset,
         properties: [],
       };
-  },
+    },
   functions: {
     transfer: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'transferPunk',
       payable: false,
       constant: false,
       stateMutability: StateMutability.Nonpayable,
       target: '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb',
       inputs: [
-        {kind: FunctionInputKind.Replaceable, name: 'to', type: 'address'},
-        {kind: FunctionInputKind.Asset, name: 'punkIndex', type: 'uint256', value: asset},
+        { kind: FunctionInputKind.Replaceable, name: 'to', type: 'address' },
+        { kind: FunctionInputKind.Asset, name: 'punkIndex', type: 'uint256', value: asset },
       ],
       outputs: [],
     }),
     ownerOf: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'punkIndexToAddress',
       payable: false,
       constant: true,
       stateMutability: StateMutability.View,
       target: '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb',
       inputs: [
-        {kind: FunctionInputKind.Asset, name: '', type: 'uint256', value: asset},
+        { kind: FunctionInputKind.Asset, name: '', type: 'uint256', value: asset },
       ],
       outputs: [
-        {kind: FunctionOutputKind.Owner, name: '', type: 'address'},
+        { kind: FunctionOutputKind.Owner, name: '', type: 'address' },
       ],
     }),
     assetsOfOwnerByIndex: [],
   },
   events: {
     transfer: [{
-      type: Web3.AbiType.Event,
+      type: AbiType.Event,
       name: 'PunkTransfer',
       target: '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb',
       anonymous: false,
       inputs: [
-        {kind: EventInputKind.Source, indexed: true, name: 'from', type: 'address'},
-        {kind: EventInputKind.Destination, indexed: true, name: 'to', type: 'address'},
-        {kind: EventInputKind.Asset, indexed: false, name: 'punkIndex', type: 'uint256'},
+        { kind: EventInputKind.Source, indexed: true, name: 'from', type: 'address' },
+        { kind: EventInputKind.Destination, indexed: true, name: 'to', type: 'address' },
+        { kind: EventInputKind.Asset, indexed: false, name: 'punkIndex', type: 'uint256' },
       ],
       assetFromInputs: async (inputs: any) => inputs.punkIndex,
     }],

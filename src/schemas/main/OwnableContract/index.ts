@@ -1,6 +1,6 @@
-import * as Web3 from 'web3';
 
 import {
+  AbiType,
   FunctionInputKind,
   FunctionOutputKind,
   Schema,
@@ -21,9 +21,9 @@ export const OwnableContractSchema: Schema<OwnableContractType> = {
   thumbnail: 'https://i.redditmedia.com/NaFzmSbDX2T2RALMxy2tmGJN_gPVNH9lJggCKUDDqcc.jpg?w=320&s=3913239508209aaf6ba1188fe3d3b5fc',
   website: 'https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/ownership/Ownable.sol',
   fields: [
-    {name: 'Name', type: 'string', description: 'Contract Name'},
-    {name: 'Description', type: 'string', description: 'Contract Description'},
-    {name: 'Address', type: 'address', description: 'Contract Address'},
+    { name: 'Name', type: 'string', description: 'Contract Name' },
+    { name: 'Description', type: 'string', description: 'Contract Description' },
+    { name: 'Address', type: 'address', description: 'Contract Address' },
   ],
   assetFromFields: (fields: any) => ({
     name: fields.Name,
@@ -39,22 +39,22 @@ export const OwnableContractSchema: Schema<OwnableContractType> = {
         url: 'https://etherscan.io/address/' + asset.address,
         properties: [],
       };
-  },
+    },
   functions: {
     transfer: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'transferOwnership',
       payable: false,
       constant: false,
       stateMutability: StateMutability.Nonpayable,
       target: asset.address,
       inputs: [
-        {kind: FunctionInputKind.Replaceable, name: 'newOwner', type: 'address'},
+        { kind: FunctionInputKind.Replaceable, name: 'newOwner', type: 'address' },
       ],
       outputs: [],
     }),
     ownerOf: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'owner',
       payable: false,
       constant: true,
@@ -62,7 +62,7 @@ export const OwnableContractSchema: Schema<OwnableContractType> = {
       target: asset.address,
       inputs: [],
       outputs: [
-        {kind: FunctionOutputKind.Owner, name: 'owner', type: 'address'},
+        { kind: FunctionOutputKind.Owner, name: 'owner', type: 'address' },
       ],
     }),
     assetsOfOwnerByIndex: [],

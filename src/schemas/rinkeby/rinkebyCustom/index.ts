@@ -1,7 +1,7 @@
 
 import {
-  AnnotatedFunctionABI,
-  Schema,
+  AnnotatedFunctionABI
+  , Schema,
 } from '../../../types';
 
 export interface RinkebyCustomType {
@@ -20,11 +20,11 @@ export const rinkebyCustomSchema: Schema<RinkebyCustomType> = {
   thumbnail: 'https://d30y9cdsu7xlg0.cloudfront.net/png/45447-200.png',
   website: 'https://github.com/projectwyvern/wyvern-schemas',
   fields: [
-    {name: 'Name', type: 'string', description: 'Name of Asset'},
-    {name: 'Description', type: 'string', description: 'Description of Asset'},
-    {name: 'Thumbnail', type: 'string', description: 'URL of asset thumbnail image'},
-    {name: 'URL', type: 'string', description: 'URL of asset'},
-    {name: 'Transfer', type: 'abi', description: 'ABI of transfer function'},
+    { name: 'Name', type: 'string', description: 'Name of Asset' },
+    { name: 'Description', type: 'string', description: 'Description of Asset' },
+    { name: 'Thumbnail', type: 'string', description: 'URL of asset thumbnail image' },
+    { name: 'URL', type: 'string', description: 'URL of asset' },
+    { name: 'Transfer', type: 'abi', description: 'ABI of transfer function' },
   ],
   assetFromFields: (fields: any) => ({
     name: fields.Name,
@@ -42,7 +42,7 @@ export const rinkebyCustomSchema: Schema<RinkebyCustomType> = {
         url: asset.url,
         properties: [],
       };
-  },
+    },
   functions: {
     transfer: asset => asset.transfer,
     assetsOfOwnerByIndex: [],

@@ -1,6 +1,6 @@
-import * as Web3 from 'web3';
 
 import {
+  AbiType,
   FunctionInputKind,
   FunctionOutputKind,
   Schema,
@@ -21,9 +21,9 @@ export const ERC1155Schema: Schema<SemiFungibleTradeType> = {
   thumbnail: 'https://opensea.io/static/images/opensea-icon.png',
   website: 'https://github.com/ethereum/eips/issues/1155',
   fields: [
-    {name: 'ID', type: 'uint256', description: 'Asset Token ID'},
-    {name: 'Address', type: 'address', description: 'Asset Contract Address'},
-    {name: 'Quantity', type: 'uint256', description: 'Quantity to transfer'},
+    { name: 'ID', type: 'uint256', description: 'Asset Token ID' },
+    { name: 'Address', type: 'address', description: 'Asset Contract Address' },
+    { name: 'Quantity', type: 'uint256', description: 'Quantity to transfer' },
   ],
   assetFromFields: (fields: any) => ({
     id: fields.ID,
@@ -44,37 +44,37 @@ export const ERC1155Schema: Schema<SemiFungibleTradeType> = {
         thumbnail: '',
         properties: [],
       };
-  },
+    },
   functions: {
     transfer: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'safeTransferFrom',
       payable: false,
       constant: false,
       stateMutability: StateMutability.Nonpayable,
       target: asset.address,
       inputs: [
-        {kind: FunctionInputKind.Owner, name: '_from', type: 'address'},
-        {kind: FunctionInputKind.Replaceable, name: '_to', type: 'address'},
-        {kind: FunctionInputKind.Asset, name: '_id', type: 'uint256', value: asset.id},
-        {kind: FunctionInputKind.Count, name: '_value', type: 'uint256', value: asset.quantity},
-        {kind: FunctionInputKind.Data, name: '_data', type: 'bytes', value: ''},
+        { kind: FunctionInputKind.Owner, name: '_from', type: 'address' },
+        { kind: FunctionInputKind.Replaceable, name: '_to', type: 'address' },
+        { kind: FunctionInputKind.Asset, name: '_id', type: 'uint256', value: asset.id },
+        { kind: FunctionInputKind.Count, name: '_value', type: 'uint256', value: asset.quantity },
+        { kind: FunctionInputKind.Data, name: '_data', type: 'bytes', value: '' },
       ],
       outputs: [],
     }),
     countOf: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'balanceOf',
       payable: false,
       constant: true,
       stateMutability: StateMutability.View,
       target: asset.address,
       inputs: [
-        {kind: FunctionInputKind.Owner, name: '_owner', type: 'address'},
-        {kind: FunctionInputKind.Asset, name: '_id', type: 'uint256', value: asset.id},
+        { kind: FunctionInputKind.Owner, name: '_owner', type: 'address' },
+        { kind: FunctionInputKind.Asset, name: '_id', type: 'uint256', value: asset.id },
       ],
       outputs: [
-        {kind: FunctionOutputKind.Count, name: 'balance', type: 'uint'},
+        { kind: FunctionOutputKind.Count, name: 'balance', type: 'uint' },
       ],
       assetFromOutputs: (outputs: any) => outputs.balance,
     }),

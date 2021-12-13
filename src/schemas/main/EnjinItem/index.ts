@@ -1,10 +1,9 @@
-import * as Web3 from 'web3';
 
 import {
+  AbiType,
   FunctionInputKind,
   FunctionOutputKind,
-  Schema,
-  StateMutability,
+  Schema, StateMutability,
 } from '../../../types';
 import { ERC1155Schema, SemiFungibleTradeType } from '../../ERC1155';
 
@@ -18,33 +17,33 @@ export const EnjinItemSchema: Schema<SemiFungibleTradeType> = {
   functions: {
     ...ERC1155Schema.functions,
     ownerOf: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'ownerOf',
       payable: false,
       constant: true,
       stateMutability: StateMutability.View,
       target: asset.address,
       inputs: [
-        {kind: FunctionInputKind.Asset, name: '_id', type: 'uint256', value: asset.id},
+        { kind: FunctionInputKind.Asset, name: '_id', type: 'uint256', value: asset.id },
       ],
       outputs: [
-        {kind: FunctionOutputKind.Owner, name: 'owner', type: 'address'},
+        { kind: FunctionOutputKind.Owner, name: 'owner', type: 'address' },
       ],
     }),
     // Parameters are flipped from 1155
     countOf: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'balanceOf',
       payable: false,
       constant: true,
       stateMutability: StateMutability.View,
       target: asset.address,
       inputs: [
-        {kind: FunctionInputKind.Asset, name: '_id', type: 'uint256', value: asset.id},
-        {kind: FunctionInputKind.Owner, name: '_owner', type: 'address'},
+        { kind: FunctionInputKind.Asset, name: '_id', type: 'uint256', value: asset.id },
+        { kind: FunctionInputKind.Owner, name: '_owner', type: 'address' },
       ],
       outputs: [
-        {kind: FunctionOutputKind.Count, name: 'balance', type: 'uint'},
+        { kind: FunctionOutputKind.Count, name: 'balance', type: 'uint' },
       ],
       assetFromOutputs: (outputs: any) => outputs.balance,
     }),

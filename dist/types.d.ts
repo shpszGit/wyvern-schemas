@@ -1,14 +1,15 @@
-import * as Web3 from 'web3';
-import { AnnotatedFunctionInput, AnnotatedFunctionABI, FunctionInputKind } from 'wyvern-js/lib/types';
+import { AnnotatedFunctionABI, AnnotatedFunctionInput, FunctionInputKind } from 'wyvern-js/lib/types';
 export { AnnotatedFunctionInput, AnnotatedFunctionABI, FunctionInputKind, };
 export declare enum Network {
     Main = "main",
     Rinkeby = "rinkeby",
     Kovan = "kovan"
 }
-export declare enum ABIType {
+export declare enum AbiType {
     Function = "function",
-    Event = "event"
+    Constructor = "constructor",
+    Event = "event",
+    Fallback = "fallback"
 }
 export interface Token {
     name: string;
@@ -53,7 +54,7 @@ export interface AnnotatedEventInput {
     kind: EventInputKind;
 }
 export interface AnnotatedEventABI<T> {
-    type: Web3.AbiType.Event;
+    type: AbiType.Event;
     name: string;
     target: string;
     anonymous: boolean;

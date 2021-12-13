@@ -1,6 +1,6 @@
-import * as Web3 from 'web3';
 
 import {
+  AbiType,
   FunctionInputKind,
   FunctionOutputKind,
   Schema,
@@ -20,8 +20,8 @@ export const ERC20Schema: Schema<FungibleTradeType> = {
   thumbnail: 'https://opensea.io/static/images/opensea-icon.png',
   website: 'https://github.com/ethereum/eips/issues/20',
   fields: [
-    {name: 'Address', type: 'address', description: 'Asset Contract Address'},
-    {name: 'Quantity', type: 'uint256', description: 'Quantity to transfer'},
+    { name: 'Address', type: 'address', description: 'Asset Contract Address' },
+    { name: 'Quantity', type: 'uint256', description: 'Quantity to transfer' },
   ],
   assetFromFields: (fields: any) => ({
     address: fields.Address,
@@ -40,34 +40,34 @@ export const ERC20Schema: Schema<FungibleTradeType> = {
         thumbnail: '',
         properties: [],
       };
-  },
+    },
   functions: {
     transfer: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'transferFrom',
       payable: false,
       constant: false,
       stateMutability: StateMutability.Nonpayable,
       target: asset.address,
       inputs: [
-        {kind: FunctionInputKind.Owner, name: '_from', type: 'address'},
-        {kind: FunctionInputKind.Replaceable, name: '_to', type: 'address'},
-        {kind: FunctionInputKind.Count, name: '_value', type: 'uint256', value: asset.quantity },
+        { kind: FunctionInputKind.Owner, name: '_from', type: 'address' },
+        { kind: FunctionInputKind.Replaceable, name: '_to', type: 'address' },
+        { kind: FunctionInputKind.Count, name: '_value', type: 'uint256', value: asset.quantity },
       ],
       outputs: [],
     }),
     countOf: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'balanceOf',
       payable: false,
       constant: true,
       stateMutability: StateMutability.View,
       target: asset.address,
       inputs: [
-        {kind: FunctionInputKind.Owner, name: '_owner', type: 'address'},
+        { kind: FunctionInputKind.Owner, name: '_owner', type: 'address' },
       ],
       outputs: [
-        {kind: FunctionOutputKind.Count, name: 'balance', type: 'uint'},
+        { kind: FunctionOutputKind.Count, name: 'balance', type: 'uint' },
       ],
       assetFromOutputs: (outputs: any) => outputs.balance,
     }),

@@ -1,5 +1,3 @@
-import { AbiType } from 'web3';
-
 import {
   ENSName,
   ENSNameBaseSchema,
@@ -7,10 +5,10 @@ import {
   nodehash,
 } from '../../../common/ens';
 import {
+  AbiType,
   EventInputKind,
   FunctionInputKind,
-  Schema,
-  StateMutability,
+  Schema, StateMutability,
 } from '../../../types';
 
 export const ENS_SHORT_NAME_AUCTION_ADDRESS =
@@ -19,7 +17,7 @@ export const ENS_SHORT_NAME_AUCTION_ADDRESS =
 export const ENSShortNameAuctionSchema: Schema<ENSName> = {
   ...ENSNameBaseSchema,
   version: 0,
-  deploymentBlock: 8488908,
+  deploymentBlock: 8866993, // not actually deploy block but no txs within 1000 blocks of deploy
   name: 'ENSShortNameAuction',
   description: 'ERC721 ENS short (3-6 character) names sold via auction.',
   thumbnail: '', // TODO: put SVG body directly here or host a PNG ourselves?

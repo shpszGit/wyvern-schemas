@@ -1,7 +1,7 @@
 import axios from 'axios';
-import * as Web3 from 'web3';
 
 import {
+  AbiType,
   EventInputKind,
   FunctionInputKind,
   FunctionOutputKind,
@@ -19,10 +19,10 @@ export const CryptoKittiesSchema: Schema<CryptoKittiesType> = {
   thumbnail: 'https://www.cryptokitties.co/images/kitty-eth.svg',
   website: 'https://cryptokitties.co',
   fields: [
-    {name: 'ID', type: 'uint256', description: 'CryptoKitty number.'},
+    { name: 'ID', type: 'uint256', description: 'CryptoKitty number.' },
   ],
   assetFromFields: (fields: any) => fields.ID,
-  assetToFields: asset => ({ID: asset}),
+  assetToFields: asset => ({ ID: asset }),
   formatter:
     async asset => {
       const response = await axios.get(`https://api.cryptokitties.co/kitties/${asset}`).catch(err => {
@@ -55,47 +55,47 @@ export const CryptoKittiesSchema: Schema<CryptoKittiesType> = {
           })),
         };
       }
-  },
+    },
   functions: {
     transfer: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'transfer',
       payable: false,
       constant: false,
       stateMutability: StateMutability.Nonpayable,
       target: '0x06012c8cf97bead5deae237070f9587f8e7a266d',
       inputs: [
-        {kind: FunctionInputKind.Replaceable, name: '_to', type: 'address'},
-        {kind: FunctionInputKind.Asset, name: '_tokenId', type: 'uint256', value: asset},
+        { kind: FunctionInputKind.Replaceable, name: '_to', type: 'address' },
+        { kind: FunctionInputKind.Asset, name: '_tokenId', type: 'uint256', value: asset },
       ],
       outputs: [],
     }),
     ownerOf: asset => ({
-      type: Web3.AbiType.Function,
+      type: AbiType.Function,
       name: 'ownerOf',
       payable: false,
       constant: true,
       stateMutability: StateMutability.View,
       target: '0x06012c8cf97bead5deae237070f9587f8e7a266d',
       inputs: [
-        {kind: FunctionInputKind.Asset, name: '_tokenId', type: 'uint256', value: asset},
+        { kind: FunctionInputKind.Asset, name: '_tokenId', type: 'uint256', value: asset },
       ],
       outputs: [
-        {kind: FunctionOutputKind.Owner, name: 'owner', type: 'address'},
+        { kind: FunctionOutputKind.Owner, name: 'owner', type: 'address' },
       ],
     }),
     assetsOfOwnerByIndex: [],
   },
   events: {
     transfer: [{
-      type: Web3.AbiType.Event,
+      type: AbiType.Event,
       name: 'Transfer',
       target: '0x06012c8cf97bead5deae237070f9587f8e7a266d',
       anonymous: false,
       inputs: [
-        {kind: EventInputKind.Source, indexed: false, name: 'from', type: 'address'},
-        {kind: EventInputKind.Destination, indexed: false, name: 'to', type: 'address'},
-        {kind: EventInputKind.Asset, indexed: false, name: 'tokenId', type: 'uint256'},
+        { kind: EventInputKind.Source, indexed: false, name: 'from', type: 'address' },
+        { kind: EventInputKind.Destination, indexed: false, name: 'to', type: 'address' },
+        { kind: EventInputKind.Asset, indexed: false, name: 'tokenId', type: 'uint256' },
       ],
       assetFromInputs: async (inputs: any) => inputs.tokenId,
     }],
