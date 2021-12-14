@@ -3,27 +3,16 @@ const { INFURA_API_KEY } = process.env;
 if (!INFURA_API_KEY) {
   throw new Error("Need to set INFURA_API_KEY");
 }
-const assert = require("assert");
-const Web3 = require("web3");
+import assert from 'assert';
+import Web3 from 'web3';
+import { schemas } from '../src/index';
 const ZeroClientProvider = require("web3-provider-engine/zero.js");
 
 const engine = ZeroClientProvider({
-  getAccounts: () => {},
+  getAccounts: () => { },
   rpcUrl: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
 });
 const web3 = new Web3(engine);
-
-const { schemas } = require("../dist/index.js");
-
-const promisify = (inner) =>
-  new Promise((resolve, reject) =>
-    inner((err, res) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(res);
-    })
-  );
 
 schemas.main.map((schema) => {
   describe(schema.name, () => {
@@ -38,27 +27,27 @@ schemas.main.map((schema) => {
 
     const transfer = schema.events.transfer[0];
     if (transfer) {
-      const transferContract = web3.eth
-        .contract([transfer])
-        .at(transfer.target);
+
+      const transferContract = new web3.eth
+        .Contract([transfer], transfer.target)
       it("should have some transfer events", async () => {
+        // console.log(transferContract);
         const fromBlock = schema.deploymentBlock;
         const toBlock = fromBlock + 10000;
-        const events = await promisify((c) =>
-          transferContract[transfer.name]({}, { fromBlock, toBlock }).get(c)
-        );
+        const events = await transferContract.getPastEvents(transfer.name, { fromBlock, toBlock });
         console.log(
           events.length +
-            " transfer events for schema " +
-            schema.name +
-            " in first 10000 blocks"
+          " transfer events for schema " +
+          schema.name +
+          " in first 10000 blocks"
         );
         assert.equal(
           events.length > 0,
           true,
           "No transfer events found in first 10000 blocks"
         );
-      });
+
+      }).timeout(5000);
     }
   });
 });

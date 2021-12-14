@@ -2,4 +2,4 @@
 
 set -e
 
-yarn run mocha --timeout 50000 --exit
+yarn run mocha test/*.ts --require ts-node/register/transpile-only --exit
