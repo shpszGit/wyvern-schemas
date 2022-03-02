@@ -1,11 +1,11 @@
 import * as Web3 from 'web3';
-
 import {
   FunctionInputKind,
   FunctionOutputKind,
   Schema,
-  StateMutability,
+  StateMutability
 } from '../../types';
+
 
 export interface NonFungibleContractType {
   id: string;
@@ -20,8 +20,8 @@ export const ERC721Schema: Schema<NonFungibleContractType> = {
   thumbnail: 'https://opensea.io/static/images/opensea-icon.png',
   website: 'http://erc721.org/',
   fields: [
-    {name: 'ID', type: 'uint256', description: 'Asset Token ID'},
-    {name: 'Address', type: 'address', description: 'Asset Contract Address'},
+    { name: 'ID', type: 'uint256', description: 'Asset Token ID' },
+    { name: 'Address', type: 'address', description: 'Asset Contract Address' },
   ],
   assetFromFields: (fields: any) => ({
     id: fields.ID,
@@ -40,7 +40,7 @@ export const ERC721Schema: Schema<NonFungibleContractType> = {
         thumbnail: '',
         properties: [],
       };
-  },
+    },
   functions: {
     transfer: asset => ({
       type: Web3.AbiType.Function,
@@ -50,9 +50,26 @@ export const ERC721Schema: Schema<NonFungibleContractType> = {
       stateMutability: StateMutability.Nonpayable,
       target: asset.address,
       inputs: [
-        {kind: FunctionInputKind.Owner, name: '_from', type: 'address'},
-        {kind: FunctionInputKind.Replaceable, name: '_to', type: 'address'},
-        {kind: FunctionInputKind.Asset, name: '_tokenId', type: 'uint256', value: asset.id},
+        { kind: FunctionInputKind.Owner, name: '_from', type: 'address' },
+        { kind: FunctionInputKind.Replaceable, name: '_to', type: 'address' },
+        { kind: FunctionInputKind.Asset, name: '_tokenId', type: 'uint256', value: asset.id },
+      ],
+      outputs: [],
+    }),
+    checkAndTransfer: (asset, validatorAddress, merkle) => ({
+      type: Web3.AbiType.Function,
+      name: 'matchERC721UsingCriteria',
+      payable: false,
+      constant: false,
+      stateMutability: StateMutability.Nonpayable,
+      target: validatorAddress,
+      inputs: [
+        { kind: FunctionInputKind.Owner, name: 'from', type: 'address' },
+        { kind: FunctionInputKind.Replaceable, name: 'to', type: 'address' },
+        { kind: FunctionInputKind.Asset, name: 'token', type: 'address', value: asset.address },
+        { kind: FunctionInputKind.Asset, name: 'tokenId', type: 'uint256', value: asset.id },
+        { kind: FunctionInputKind.Data, name: 'root', type: 'bytes32', value: merkle ? merkle.root : "" },
+        { kind: FunctionInputKind.Data, name: 'proof', type: 'bytes32[]', value: merkle ? merkle.proof : "[]" },
       ],
       outputs: [],
     }),
@@ -64,10 +81,10 @@ export const ERC721Schema: Schema<NonFungibleContractType> = {
       stateMutability: StateMutability.View,
       target: asset.address,
       inputs: [
-        {kind: FunctionInputKind.Asset, name: '_tokenId', type: 'uint256', value: asset.id},
+        { kind: FunctionInputKind.Asset, name: '_tokenId', type: 'uint256', value: asset.id },
       ],
       outputs: [
-        {kind: FunctionOutputKind.Owner, name: 'owner', type: 'address'},
+        { kind: FunctionOutputKind.Owner, name: 'owner', type: 'address' },
       ],
     }),
     assetsOfOwnerByIndex: [],
@@ -76,4 +93,45 @@ export const ERC721Schema: Schema<NonFungibleContractType> = {
     transfer: [],
   },
   hash: asset => asset.address + '-' + asset.id,
+};
+
+export const ERC721v3Schema: Schema<NonFungibleContractType> = {
+  ...ERC721Schema,
+  version: 3,
+  name: 'ERC721v3',
+  description: 'Items conforming to the ERC721 v3 spec, using safeTransferFrom.',
+  functions: {
+    ...ERC721Schema.functions,
+    transfer: asset => ({
+      type: Web3.AbiType.Function,
+      name: 'safeTransferFrom',
+      payable: false,
+      constant: false,
+      stateMutability: StateMutability.Nonpayable,
+      target: asset.address,
+      inputs: [
+        { kind: FunctionInputKind.Owner, name: '_from', type: 'address' },
+        { kind: FunctionInputKind.Replaceable, name: '_to', type: 'address' },
+        { kind: FunctionInputKind.Asset, name: '_tokenId', type: 'uint256', value: asset.id },
+      ],
+      outputs: [],
+    }),
+    checkAndTransfer: (asset, validatorAddress, merkle) => ({
+      type: Web3.AbiType.Function,
+      name: 'matchERC721WithSafeTransferUsingCriteria',
+      payable: false,
+      constant: false,
+      stateMutability: StateMutability.Nonpayable,
+      target: validatorAddress,
+      inputs: [
+        { kind: FunctionInputKind.Owner, name: 'from', type: 'address' },
+        { kind: FunctionInputKind.Replaceable, name: 'to', type: 'address' },
+        { kind: FunctionInputKind.Asset, name: 'token', type: 'address', value: asset.address },
+        { kind: FunctionInputKind.Asset, name: 'tokenId', type: 'uint256', value: asset.id },
+        {kind: FunctionInputKind.Data, name: 'root', type: 'bytes32', value: merkle ? merkle.root : ""},
+        {kind: FunctionInputKind.Data, name: 'proof', type: 'bytes32[]', value: merkle ? merkle.proof : "[]"},
+      ],
+      outputs: [],
+    }),
+  },
 };
