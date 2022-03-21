@@ -12,11 +12,17 @@ export {
   FunctionInputKind,
 }
 
+// --begin--2022.3.14--lzg
+// 新增polygon与mumbai
 export enum Network {
   Main = 'main',
   Rinkeby = 'rinkeby',
   Kovan = 'kovan',
+  polygon = 'polygon',
+  mumbai = 'mumbai',
 }
+// --end--2022.3.14--lzg
+
 
 export enum ABIType {
   Function = Web3.AbiType.Function,

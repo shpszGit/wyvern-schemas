@@ -4,7 +4,9 @@ export { AnnotatedFunctionInput, AnnotatedFunctionABI, FunctionInputKind, };
 export declare enum Network {
     Main = "main",
     Rinkeby = "rinkeby",
-    Kovan = "kovan"
+    Kovan = "kovan",
+    polygon = "polygon",
+    mumbai = "mumbai"
 }
 export declare enum ABIType {
     Function = "function",
