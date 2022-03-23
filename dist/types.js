@@ -3,12 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Web3 = require("web3");
 const types_1 = require("wyvern-js/lib/types");
 exports.FunctionInputKind = types_1.FunctionInputKind;
+// --begin--2022.3.14--lzg
+// 新增polygon与mumbai
 var Network;
 (function (Network) {
     Network["Main"] = "main";
     Network["Rinkeby"] = "rinkeby";
     Network["Kovan"] = "kovan";
+    Network["polygon"] = "polygon";
+    Network["mumbai"] = "mumbai";
 })(Network = exports.Network || (exports.Network = {}));
+// --end--2022.3.14--lzg
 var ABIType;
 (function (ABIType) {
     ABIType["Function"] = "function";

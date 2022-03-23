@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"0x.js@^0.29.2":
+"0x.js@0.29.2":
   version "0.29.2"
-  resolved "https://registry.yarnpkg.com/0x.js/-/0x.js-0.29.2.tgz#0cc34163b8ccd38e7960a94578f6b790316bb2ae"
+  resolved "https://registry.npmmirror.com/0x.js/-/0x.js-0.29.2.tgz#0cc34163b8ccd38e7960a94578f6b790316bb2ae"
   integrity sha512-KG7VED+NVCM2PetW9Nj4+6eflm7ANrUn2+7fMdvHHrSV24Pnz1dgnyFFttFp8gp4CUlQuByBWsvyRo6A8kpmyg==
   dependencies:
     "@0xproject/assert" "^0.0.10"
@@ -23,12 +23,12 @@
     uuid "^3.1.0"
     web3 "^0.20.0"
 
-"@0xproject/abi-gen@^0.1.1":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@0xproject/abi-gen/-/abi-gen-0.1.7.tgz#36ed8b7a909c529ecff74438edb87fbb600dd2fa"
-  integrity sha512-mFFprGLVYHl9sD6PGwcAwTqncueqfau6wPGwJV7mQ/Vj3thMo17BY8xzpeSIkXjrdo6lZHlzyVUVrEA1krfjSw==
+"@0xproject/abi-gen@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.npmmirror.com/@0xproject/abi-gen/-/abi-gen-0.1.2.tgz#a74baa088f94ff83431573b5a3e010ccbb5ba300"
+  integrity sha512-vwArB0lTTuInOWTh5KeeNeJTswrGJrHebau8sdrG8TBNiVwAAehthfWflieMRKK54D11Z+7TO8fupCMa7BaoxA==
   dependencies:
-    "@0xproject/utils" "^0.3.0"
+    "@0xproject/utils" "^0.2.0"
     chalk "^2.3.0"
     glob "^7.1.2"
     handlebars "^4.0.11"
@@ -37,6 +37,16 @@
     to-snake-case "^1.0.0"
     web3 "^0.20.0"
     yargs "^10.0.3"
+
+"@0xproject/assert@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.npmmirror.com/@0xproject/assert/-/assert-0.0.11.tgz#e40ebbb361bf407f8886d63f1b2ecf4965b442d2"
+  integrity sha512-hl4C3w5qX7vbvPses/PtOlZg4tX/elXJ3RPuEOYvHNnBEOFybNSDsGrrPegPxkW56mZWBhwyBaqThTj9OoVmYQ==
+  dependencies:
+    "@0xproject/json-schemas" "^0.7.3"
+    "@0xproject/utils" "^0.2.0"
+    lodash "^4.17.4"
+    valid-url "^1.0.9"
 
 "@0xproject/assert@^0.0.10":
   version "0.0.10"
@@ -48,15 +58,13 @@
     lodash "^4.17.4"
     valid-url "^1.0.9"
 
-"@0xproject/assert@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@0xproject/assert/-/assert-0.0.11.tgz#e40ebbb361bf407f8886d63f1b2ecf4965b442d2"
-  integrity sha512-hl4C3w5qX7vbvPses/PtOlZg4tX/elXJ3RPuEOYvHNnBEOFybNSDsGrrPegPxkW56mZWBhwyBaqThTj9OoVmYQ==
+"@0xproject/json-schemas@0.7.3":
+  version "0.7.3"
+  resolved "https://registry.npmmirror.com/@0xproject/json-schemas/-/json-schemas-0.7.3.tgz#8a532adc16e77519fc66b46d2dfd868b5506a4a4"
+  integrity sha512-ZUtrZvYJ8xNvlXjI0hAQxx+XTy+DtvTzFLj7BUnmkRKD/qccpq+mlpFCqCrCBksjflNquF2LboZflKrQnt98mQ==
   dependencies:
-    "@0xproject/json-schemas" "^0.7.3"
-    "@0xproject/utils" "^0.2.0"
-    lodash "^4.17.4"
-    valid-url "^1.0.9"
+    jsonschema "^1.2.0"
+    lodash.values "^4.3.0"
 
 "@0xproject/json-schemas@^0.7.2", "@0xproject/json-schemas@^0.7.3":
   version "0.7.24"
@@ -84,9 +92,9 @@
     "@0xproject/types" "^0.7.0"
     bignumber.js "~4.1.0"
 
-"@0xproject/utils@^0.1.3":
+"@0xproject/utils@0.1.3", "@0xproject/utils@^0.1.3":
   version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@0xproject/utils/-/utils-0.1.3.tgz#58a9c7e19ab7710e0af17a0c2f1c7fc1b3140e85"
+  resolved "https://registry.npmmirror.com/@0xproject/utils/-/utils-0.1.3.tgz#58a9c7e19ab7710e0af17a0c2f1c7fc1b3140e85"
   integrity sha512-lVuXcHe4cd68gG5HYQk7QPxtnkDpcdpMDiT3dNlcBYU68r8FbE4pGOmhUtdztQmJjHxmcEkH/G8yoAr/0DSzyQ==
   dependencies:
     bignumber.js "~4.1.0"
@@ -103,13 +111,22 @@
     lodash "^4.17.4"
     web3 "^0.20.0"
 
-"@0xproject/utils@^0.3.0", "@0xproject/utils@^0.3.4":
+"@0xproject/utils@^0.3.4":
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@0xproject/utils/-/utils-0.3.4.tgz#263ac7a5ef0b4c65ce893d3e6d1e9b1c2cf75b0b"
   integrity sha512-6rNzuZvY3PghEMcZBGzwGdyMBQ11DXXWWMF3Ar3ajRZvSIjPSLpO7cVXcQQOTnTksiSDLJn/kkaQHz8ZT9yJ+w==
   dependencies:
     bignumber.js "~4.1.0"
     js-sha3 "^0.7.0"
+    lodash "^4.17.4"
+    web3 "^0.20.0"
+
+"@0xproject/web3-wrapper@0.1.4":
+  version "0.1.4"
+  resolved "https://registry.npmmirror.com/@0xproject/web3-wrapper/-/web3-wrapper-0.1.4.tgz#c7abe4184aa17a47c933c9511648d9eaff50b728"
+  integrity sha512-wQCbQt3KwRXdy7p7Xyiiq/OsZnoOrgtXnQB9jzVwuwtMlEHMlZU+FzuM8r6SNWohBQzpXdLEIOa+qtQvgj7cSw==
+  dependencies:
+    "@0xproject/utils" "^0.1.3"
     lodash "^4.17.4"
     web3 "^0.20.0"
 
@@ -898,7 +915,7 @@ bn.js@4.11.7:
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.7.tgz#ddb048e50d9482790094c13eb3fcfc833ce7ab46"
   integrity sha512-LxFiV5mefv0ley0SzqkOPR1bC4EbpPx8LkOz5vMe/Yi15t5hzwgO/G+tc7wOtL4PZTYjwHu8JnEiSLumuSjSfA==
 
-bn.js@^4.10.0, bn.js@^4.11.0, bn.js@^4.11.1, bn.js@^4.11.7, bn.js@^4.11.8, bn.js@^4.4.0, bn.js@^4.8.0:
+bn.js@4.11.8, bn.js@^4.10.0, bn.js@^4.11.0, bn.js@^4.11.1, bn.js@^4.11.7, bn.js@^4.11.8, bn.js@^4.4.0, bn.js@^4.8.0:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
   integrity sha512-ItfYfPLkWHUjckQCk8xC+LwxgK8NYcXywGigJgSwOP8Y2iyWT4f2vsZnoOXTTbo+o5yXmIUJ4gn5538SO5S3gA==
@@ -1489,9 +1506,9 @@ ethereumjs-abi@^0.6.4, "ethereumjs-abi@git+https://github.com/ethereumjs/ethereu
     bn.js "^4.11.8"
     ethereumjs-util "^6.0.0"
 
-"ethereumjs-abi@https://github.com/ProjectWyvern/ethereumjs-abi.git":
+"ethereumjs-abi@https://github.com/miaoxingrenya/ethereumjs-abi.git":
   version "0.6.6"
-  resolved "https://github.com/ProjectWyvern/ethereumjs-abi.git#3d2d89641a6ad5984929b6ca4b646452ec74f73d"
+  resolved "https://github.com/miaoxingrenya/ethereumjs-abi.git#3d2d89641a6ad5984929b6ca4b646452ec74f73d"
   dependencies:
     bn.js "^4.10.0"
     ethereumjs-util "^4.3.0"
@@ -1548,6 +1565,19 @@ ethereumjs-tx@^1.2.0, ethereumjs-tx@^1.2.2, ethereumjs-tx@^1.3.3:
   dependencies:
     ethereum-common "^0.0.18"
     ethereumjs-util "^5.0.0"
+
+ethereumjs-util@5.1.3:
+  version "5.1.3"
+  resolved "https://registry.npmmirror.com/ethereumjs-util/-/ethereumjs-util-5.1.3.tgz#0c1f6efb1da9c5b6720a65697859fc0be6672df0"
+  integrity sha512-U/wmHagElZVxnpo3bFsvk5beFADegUcEzqtA/NfQbitAPOs6JoYq8M4SY9NfH4HD8236i63UOkkXafd7bqBL9A==
+  dependencies:
+    bn.js "^4.8.0"
+    create-hash "^1.1.2"
+    ethjs-util "^0.1.3"
+    keccak "^1.0.2"
+    rlp "^2.0.0"
+    safe-buffer "^5.1.1"
+    secp256k1 "^3.0.1"
 
 ethereumjs-util@^4.3.0:
   version "4.5.0"
@@ -2311,9 +2341,9 @@ jsesc@~0.5.0:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
   integrity sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
 
-json-loader@^0.5.7:
+json-loader@0.5.7:
   version "0.5.7"
-  resolved "https://registry.yarnpkg.com/json-loader/-/json-loader-0.5.7.tgz#dca14a70235ff82f0ac9a3abeb60d337a365185d"
+  resolved "https://registry.npmmirror.com/json-loader/-/json-loader-0.5.7.tgz#dca14a70235ff82f0ac9a3abeb60d337a365185d"
   integrity sha512-QLPs8Dj7lnf3e3QYS1zkCo+4ZwqOiF9d/nZnYozTISxXWCfNs9yuky5rJw4/W34s7POaNlbZmQGaB5NiXCbP4w==
 
 json-rpc-engine@^3.6.0:
@@ -2394,7 +2424,12 @@ jsonlint@^1.6.2:
     JSV "^4.0.x"
     nomnom "^1.5.x"
 
-jsonschema@^1.2.0, jsonschema@^1.2.2:
+jsonschema@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.npmmirror.com/jsonschema/-/jsonschema-1.2.2.tgz#83ab9c63d65bf4d596f91d81195e78772f6452bc"
+  integrity sha512-iX5OFQ6yx9NgbHCwse51ohhKgLuLL7Z5cNOeZOPIlDUtAMrxlruHLzVZxbltdHE5mEDXN+75oFOwq6Gn0MZwsA==
+
+jsonschema@^1.2.0:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/jsonschema/-/jsonschema-1.2.4.tgz#a46bac5d3506a254465bc548876e267c6d0d6464"
   integrity sha512-lz1nOH69GbsVHeVgEdvyavc/33oymY1AZwtePMiMj4HZPMbP5OIKK3zT9INMWjwua/V4Z4yq7wSlBbSG+g4AEw==
@@ -2552,6 +2587,11 @@ lodash.values@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.values/-/lodash.values-4.3.0.tgz#a3a6c2b0ebecc5c2cba1c17e6e620fe81b53d347"
   integrity sha1-o6bCsOvsxcLLocF+bmIP6BtT00c=
+
+lodash@4.17.4:
+  version "4.17.4"
+  resolved "https://registry.npmmirror.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+  integrity sha512-6X37Sq9KCpLSXEh8uM12AKYlviHPNNk4RxiGBn4cmKGJinbXBneWIV7iE/nXkM928O7ytHcHb6+X6Svl0f4hXg==
 
 lodash@^4.17.14, lodash@^4.17.4:
   version "4.17.15"
@@ -3976,6 +4016,17 @@ web3-typescript-typings@^0.9.4:
   dependencies:
     bignumber.js "~4.1.0"
 
+web3@0.20.4:
+  version "0.20.4"
+  resolved "https://registry.npmmirror.com/web3/-/web3-0.20.4.tgz#400e6579a65bb4a3dde71a6ebf6509afadc33a04"
+  integrity sha512-wmdWT4pvAs8tK2FOpqYKAKCEtCw06F8azk3Nh1+MrB6fLI7p3EL7HM3zWaHRjzcC/d/PoVWz2PiKrBEH6G1IRg==
+  dependencies:
+    bignumber.js "git+https://github.com/frozeman/bignumber.js-nolookahead.git"
+    crypto-js "^3.1.4"
+    utf8 "^2.1.1"
+    xhr2 "*"
+    xmlhttprequest "*"
+
 web3@^0.20.0, web3@^0.20.4:
   version "0.20.7"
   resolved "https://registry.yarnpkg.com/web3/-/web3-0.20.7.tgz#1605e6d81399ed6f85a471a4f3da0c8be57df2f7"
@@ -4027,23 +4078,23 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
-"wyvern-js@github:ProjectOpenSea/wyvern-js#semver:^3.3.0":
+"wyvern-js@github:miaoxingrenya/wyvern-js#polygon_v3":
   version "3.2.0"
-  resolved "https://codeload.github.com/ProjectOpenSea/wyvern-js/tar.gz/1634ad0e2f9961accca62edbf4ac624effa18552"
+  resolved "https://codeload.github.com/miaoxingrenya/wyvern-js/tar.gz/875555f080060e8da03240bc7e63f063a65ce367"
   dependencies:
-    "0x.js" "^0.29.2"
-    "@0xproject/abi-gen" "^0.1.1"
-    "@0xproject/assert" "^0.0.11"
-    "@0xproject/json-schemas" "^0.7.3"
-    "@0xproject/utils" "^0.1.3"
-    "@0xproject/web3-wrapper" "^0.1.4"
-    bn.js "^4.11.8"
-    ethereumjs-abi "https://github.com/ProjectWyvern/ethereumjs-abi.git"
-    ethereumjs-util "^5.1.3"
-    json-loader "^0.5.7"
-    jsonschema "^1.2.2"
-    lodash "^4.17.4"
-    web3 "^0.20.4"
+    "0x.js" "0.29.2"
+    "@0xproject/abi-gen" "0.1.2"
+    "@0xproject/assert" "0.0.11"
+    "@0xproject/json-schemas" "0.7.3"
+    "@0xproject/utils" "0.1.3"
+    "@0xproject/web3-wrapper" "0.1.4"
+    bn.js "4.11.8"
+    ethereumjs-abi "https://github.com/miaoxingrenya/ethereumjs-abi.git"
+    ethereumjs-util "5.1.3"
+    json-loader "0.5.7"
+    jsonschema "1.2.2"
+    lodash "4.17.4"
+    web3 "0.20.4"
 
 xhr2-cookies@^1.1.0:
   version "1.1.0"
@@ -4051,6 +4102,11 @@ xhr2-cookies@^1.1.0:
   integrity sha1-fXdEnQmZGX8VXLc7I99yUF7YnUg=
   dependencies:
     cookiejar "^2.1.1"
+
+xhr2@*:
+  version "0.2.1"
+  resolved "https://registry.npmmirror.com/xhr2/-/xhr2-0.2.1.tgz#4e73adc4f9cfec9cbd2157f73efdce3a5f108a93"
+  integrity sha512-sID0rrVCqkVNUn8t6xuv9+6FViXjUVXq8H5rWOH2rz9fDNQEd4g0EA2XlcEdJXRz5BMEn4O1pJFdT+z4YHhoWw==
 
 xhr@^2.2.0:
   version "2.5.0"
