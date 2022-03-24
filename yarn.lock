@@ -1513,6 +1513,14 @@ ethereumjs-abi@^0.6.4, "ethereumjs-abi@git+https://github.com/ethereumjs/ethereu
     bn.js "^4.10.0"
     ethereumjs-util "^4.3.0"
 
+"ethereumjs-abi@https://github.com/shpszGit/ethereumjs-abi.git":
+  version "0.6.6"
+  uid "3d2d89641a6ad5984929b6ca4b646452ec74f73d"
+  resolved "https://github.com/shpszGit/ethereumjs-abi.git#3d2d89641a6ad5984929b6ca4b646452ec74f73d"
+  dependencies:
+    bn.js "^4.10.0"
+    ethereumjs-util "^4.3.0"
+
 ethereumjs-account@^2.0.3:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/ethereumjs-account/-/ethereumjs-account-2.0.5.tgz#eeafc62de544cb07b0ee44b10f572c9c49e00a84"
@@ -4078,9 +4086,9 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
-"wyvern-js@github:miaoxingrenya/wyvern-js#polygon_v3":
+"wyvern-js@github:shpszGit/wyvern-js#polygon_v3":
   version "3.2.0"
-  resolved "https://codeload.github.com/miaoxingrenya/wyvern-js/tar.gz/875555f080060e8da03240bc7e63f063a65ce367"
+  resolved "https://codeload.github.com/shpszGit/wyvern-js/tar.gz/875555f080060e8da03240bc7e63f063a65ce367"
   dependencies:
     "0x.js" "0.29.2"
     "@0xproject/abi-gen" "0.1.2"
